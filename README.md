@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/antukhov/s3warehouse.svg?branch=master)](https://travis-ci.org/antukhov/s3warehouse)
 [![codecov](https://codecov.io/gh/antukhov/s3warehouse/branch/master/graph/badge.svg?token=FAH13GXHFN)](https://codecov.io/gh/antukhov/s3warehouse)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=antukhov_s3warehouse&metric=alert_status)](https://sonarcloud.io/dashboard?id=antukhov_s3warehouse)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
   
 ### :bulb: &nbsp; Idea
@@ -10,7 +11,7 @@ Application implements the sample of CR~~U~~D REST API for AWS S3 (Simple Storag
 
 ### :gear: &nbsp; Components
 * Core: 
-  * [Kotlin 1.4](https://kotlinlang.org/docs/reference/whatsnew14.html) and target JDK 11
+  * [Kotlin 1.4](https://kotlinlang.org/docs/reference/whatsnew14.html), JDK 11
   * Spring Boot 2.4  
   * Gradle and [OCI](https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/html/#build-image) - Docker image assembling  
   * [AWS SDK for Java 2.0](https://docs.aws.amazon.com/sdk-for-java/v2/developer-guide/welcome.html) with S3 integration test starter  
