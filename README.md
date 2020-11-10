@@ -43,7 +43,7 @@ Being accelerator for learning and diving into the best cutting edge tools liste
 | Run app | ```./gradlew bootRun --args='--AWS_ACCESS_KEY=VALUE --AWS_SECRET_KEY=VALUE'``` * |
 | Run tests | ```./gradlew test```  |
 | Build Docker image | ```./gradlew bootBuildImage``` |
-| [Run](https://docs.docker.com/engine/reference/commandline/run/) container | ```docker run -dit -e AWS_ACCESS_KEY=VALUE -e AWS_SECRET_KEY=VALUE -p 8080:8080 antukhov/legallery:0.1``` * |
+| [Run](https://docs.docker.com/engine/reference/commandline/run/) container | ```docker run -dit -e AWS_ACCESS_KEY=VALUE -e AWS_SECRET_KEY=VALUE -p 8080:8080 antukhov/s3warehouse:0.1``` * |
 
 [ **&ast;** ] - don't forget to change values of environment variables
 
