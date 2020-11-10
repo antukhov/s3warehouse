@@ -1,4 +1,8 @@
 # One-stop guide: Kotlin + Spring Boot 2 + AWS S3 + Testcontainers
+
+[![Build Status](https://travis-ci.org/antukhov/s3warehouse.svg?branch=master)](https://travis-ci.org/antukhov/s3warehouse)
+[![codecov](https://codecov.io/gh/antukhov/s3warehouse/branch/master/graph/badge.svg?token=FAH13GXHFN)](https://codecov.io/gh/antukhov/s3warehouse)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
   
 ### :bulb: &nbsp; Idea
 
