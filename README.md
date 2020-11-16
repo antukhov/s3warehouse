@@ -33,12 +33,15 @@ Being accelerator for learning and diving into the best cutting edge tools liste
 
 | Variable | Description | Default value |
 |---|---|---|
-| SERVER_PORT | Listening port of embedded Tomcat | 8080 |
-| MAX_FILE_SIZE | Maximum size of each uploading file of request | 10MB |
-| MAX_REQUEST_SIZE | Maximum size of request | 10MB |
+| **AWS** | | |
 | AWS_REGION | Listening port of embedded Tomcat | us-east-1 |
 | AWS_ACCESS_KEY | [Access key](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html) for an AWS IAM user |  |
 | AWS_SECRET_KEY | Secret key for the Access Key |  |
+| **WEB-SERVER** | | |
+| SERVER_PORT | Listening port of embedded Tomcat | 8080 |
+| MAX_FILE_SIZE | Maximum size of each uploading file of request | 10MB |
+| MAX_REQUEST_SIZE | Maximum size of request | 10MB |
+| **DEBUG** | | |
 | SWAGGER_ENABLED | Switch on the JSON and GUI documentation for the REST API | false |
 | LOG_FILE | Set the relative or absolute path to the log file | s3warehouse.log |
 | ACTUATOR_LOG_FILE | Provides an access to log file through the /status/logfile | false |
@@ -53,6 +56,18 @@ Being accelerator for learning and diving into the best cutting edge tools liste
 | [Run](https://docs.docker.com/engine/reference/commandline/run/) container | ```docker run -dit -e AWS_ACCESS_KEY=VALUE -e AWS_SECRET_KEY=VALUE -p 8080:8080 antukhov/s3warehouse:0.1``` * |
 
 [ **&ast;** ] - don't forget to change values of environment variables
+
+### Quick start with the ready-to-use Docker
+
+```
+docker run -dit \
+-e AWS_REGION=REGION_VALUE \
+-e AWS_ACCESS_KEY=KEY_VALUE \
+-e AWS_SECRET_KEY=SECRET_KEY \
+-e SWAGGER_ENABLED=true \
+-p 8085:8080 \
+docker.pkg.github.com/antukhov/s3warehouse/s3warehouse:0.1
+```
 
 ## REST API documentation
 
