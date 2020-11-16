@@ -40,6 +40,8 @@ Being accelerator for learning and diving into the best cutting edge tools liste
 | AWS_ACCESS_KEY | [Access key](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html) for an AWS IAM user |  |
 | AWS_SECRET_KEY | Secret key for the Access Key |  |
 | SWAGGER_ENABLED | Switch on the JSON and GUI documentation for the REST API | false |
+| LOG_FILE | Set the relative or absolute path to the log file | s3warehouse.log |
+| ACTUATOR_LOG_FILE | Provides an access to log file through the /status/logfile | false |
 
 ### Main commands
   

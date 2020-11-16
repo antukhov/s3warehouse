@@ -19,18 +19,27 @@ import java.util.*
 @Api(value = "AWS S3",  description = "REST API for S3", tags = ["AWS S3"])
 class S3Controller(var s3service: S3Service) {
 
-    @ApiOperation(value="Get file list for given bucket")
-    @GetMapping("{bucket_name}")
+    @ApiOperation(value="List files")
+    @GetMapping("{bucket}")
     fun getFileList(
-        @PathVariable("bucket_name") bucket: String): ResponseEntity<List<String>> {
+        @PathVariable("bucket") bucket: String): ResponseEntity<List<String>> {
         return ResponseEntity.of(Optional.of(s3service.getBucketFileList(bucket)))
     }
 
-    @ApiOperation(value="Download the file")
-    @GetMapping("{bucket_name}/{file_name}")
+    @ApiOperation(value="Delete file")
+    @DeleteMapping("{bucket}/{file}")
+    fun deleteFile(
+        @PathVariable("bucket") bucket: String,
+        @PathVariable("file") fileKey: String): ResponseEntity<Any?> {
+        val responseEntity = s3service.deleteFile(bucket, fileKey)
+        return ResponseEntity(responseEntity, HttpStatus.valueOf(responseEntity.statusCode()))
+    }
+
+    @ApiOperation(value="Download file")
+    @GetMapping("{bucket}/{file}")
     fun downloadFile(
-        @PathVariable("bucket_name") bucket: String,
-        @PathVariable("file_name") fileKey: String): ResponseEntity<ByteArray> {
+        @PathVariable("bucket") bucket: String,
+        @PathVariable("file") fileKey: String): ResponseEntity<ByteArray> {
             val sourceFile : ByteArray = s3service.downloadFile(bucket, fileKey)
             return ResponseEntity.ok().contentLength(sourceFile.size.toLong())
                 .header("Content-type", "application/octet-stream")
@@ -38,14 +47,14 @@ class S3Controller(var s3service: S3Service) {
                 .body(sourceFile)
     }
 
-    @ApiOperation(value="Upload the files")
+    @ApiOperation(value="Upload files")
     @ApiImplicitParams(*[
-        ApiImplicitParam(value = "AWS Bucket name", name = "bucketName", dataType = "String", paramType = "query"),
+        ApiImplicitParam(value = "AWS Bucket name", name = "bucket", dataType = "String", paramType = "query"),
         ApiImplicitParam(value = "Files", required = true, name = "files", allowMultiple = true,  dataType = "File", paramType = "form")
     ])
-    @PostMapping("{bucketName}")
+    @PostMapping("{bucket}")
     fun uploadFile(
-            @PathVariable("bucketName") bucket: String,
+            @PathVariable("bucket") bucket: String,
             @RequestPart("files") uploadFiles : Array<MultipartFile>
     ): ResponseEntity<Any?> {
         val awsResponse = s3service.uploadFiles(bucket, uploadFiles)

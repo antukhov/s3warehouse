@@ -26,9 +26,10 @@ class SwaggerConfig {
         return Docket(DocumentationType.SWAGGER_2)
             .enable(enableSwagger)
             .apiInfo(apiInfo())
+            .useDefaultResponseMessages(false)
             .select()
             .apis(RequestHandlerSelectors.any())
-            .paths(PathSelectors.regex("/s3.*").or(PathSelectors.regex("/health")))
+            .paths(PathSelectors.regex("/s3.*"))
             .build()
     }
 
