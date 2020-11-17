@@ -15,7 +15,12 @@ import org.testcontainers.junit.jupiter.Container
 class LocalStackContainerConf {
 
     private val logger = LoggerFactory.getLogger(javaClass)
-
+    lateinit var serviceList : List<LocalStackContainer.Service>
+    @Value("\${localstack.services}")
+    lateinit var localstackServiceArray : List<String>
+    @Value("\${localstack.image.version}")
+    lateinit var localstackImageVersion : String
+    
     companion object {
         @Container
         lateinit var localstackContainer: LocalStackContainer
@@ -40,12 +45,5 @@ class LocalStackContainerConf {
     fun requiredServiceList() : List<LocalStackContainer.Service> {
         return serviceList
     }
-
-    lateinit var serviceList : List<LocalStackContainer.Service>
-
-    @Value("\${localstack.services}")
-    lateinit var localstackServiceArray : List<String>
-    @Value("\${localstack.image.version}")
-    lateinit var localstackImageVersion : String
 
 }
