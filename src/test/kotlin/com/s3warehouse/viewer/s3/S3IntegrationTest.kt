@@ -40,18 +40,22 @@ class S3IntegrationTest @Autowired constructor( var s3Service: S3TestService, va
     }
 
     @Test
-    fun `GIVEN uploading 2 files WHEN files uploaded THEN response has results for both`() {
+    fun `GIVEN uploading 2 files WHEN files uploaded THEN bucket file list size is 2`() {
         s3Service.createBucket("test-bucket")
+        // define header
         val headers = LinkedMultiValueMap<String, String>()
             .also { map -> map.add("Content-Type", MediaType.MULTIPART_FORM_DATA_VALUE) }
+        // define body with attached files
         val httpEntity = HttpEntity<Any>(
             LinkedMultiValueMap<String, Any>().also { map -> map.addAll("files", listOf(
                 ClassPathResource("assets/S3DemoDocument.txt"),
                 ClassPathResource("assets/S3DemoPicture.jpg")
             ))}
         , headers)
+        // execute POST-request
         val responseEntity = testRestTemplate.exchange<Array<S3BulkResponseEntity>>(
             "http://localhost:$port/s3/test-bucket", HttpMethod.POST, httpEntity)
+        // check if both files are in the bucket
         assert(responseEntity.body?.size ?: 0 == 2)
         s3Service.getBucketFileList("test-bucket")
             .also { list -> assert(list.size == 2) }
