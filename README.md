@@ -5,6 +5,8 @@
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=antukhov_s3warehouse&metric=alert_status)](https://sonarcloud.io/dashboard?id=antukhov_s3warehouse)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
   
+Read on Medium: [One-stop guide: Kotlin + Spring Boot 2 + AWS S3 + Testcontainers](https://antukhov.medium.com/one-stop-guide-kotlin-spring-boot-2-aws-s3-testcontainers-c418c8766db3)  
+  
 ### :bulb: &nbsp; Idea
 
 Application implements the sample of CR~~U~~D REST API for AWS S3 (Simple Storage Service) to list, upload and download objects of buckets. Service covered by an integration test which starts AWS S3 mock inside Docker container using Localstack.   
